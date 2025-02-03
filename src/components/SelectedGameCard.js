@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, Typography, Button, Collapse, Alert, CircularProgress } from '@mui/material';
 import PlayerDetails from './helpers/PlayerDetails';
 
@@ -22,7 +22,7 @@ const SelectedGamesCard = () => {
     return null; 
   };
 
-  const fetchGameData = async () => {
+  const fetchGameData = useCallback(async () => {
     setLoading(true);
     setError(null);
     const userTaggedId = getUserTaggedId();
@@ -46,9 +46,9 @@ const SelectedGamesCard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []); // useCallback ensures function identity is stable
 
-  const submitPointsPayload = async (game) => { // Pass game as parameter
+  const submitPointsPayload = async (game) => { 
     if (!game) return;
 
     // Extract gameId and playerIds from the game object
@@ -82,7 +82,7 @@ const SelectedGamesCard = () => {
 
   useEffect(() => {
     fetchGameData();
-  }, []);
+  }, [fetchGameData]); // Now the dependency is properly handled
 
   if (loading) return <CircularProgress />;
   if (error) return <Alert severity="error">{error}</Alert>;

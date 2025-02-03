@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Fab, TextField, IconButton, Typography, Link } from "@mui/material";
+import { Box, Fab, TextField, IconButton, Typography } from "@mui/material";
 import { Send, Chat } from "@mui/icons-material";
 import { useThemeContext } from "../themeContext";
 import { ragApi } from "../api";
