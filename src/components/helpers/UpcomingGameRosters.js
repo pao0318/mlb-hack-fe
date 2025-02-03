@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, CircularProgress, Alert, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel, Button } from '@mui/material';
 
@@ -24,7 +24,7 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
     return null; // Return null if no user data is found
   };
 
-  const fetchRosters = async () => {
+  const fetchRosters = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -47,7 +47,7 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
     } finally {
       setLoading(false);
     }
-  };
+  });
 
   const submitSelectedPlayers = async () => {
     try {
