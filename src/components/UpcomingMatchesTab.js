@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Grid, Typography, CircularProgress, Alert } from '@mui/material';
+import { Alert, CircularProgress, Grid, Typography } from '@mui/material';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import UpcomingGameCard from './helpers/UpcomingGameCard';
 
@@ -12,7 +12,7 @@ const UpcomingMatchesTab = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://127.0.0.1:8000/upcomingGames', {
+      const response = await fetch('https://mlb-hack-backend.onrender.com/upcomingGames', {
         method: 'GET',
       });
 

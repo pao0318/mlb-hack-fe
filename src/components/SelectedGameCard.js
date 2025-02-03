@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent, Typography, Button, Collapse, Alert, CircularProgress } from '@mui/material';
+import { Alert, Button, Card, CardContent, CircularProgress, Collapse, Typography } from '@mui/material';
+import React, { useCallback, useEffect, useState } from 'react';
 import PlayerDetails from './helpers/PlayerDetails';
 
 const SelectedGamesCard = () => {
@@ -33,7 +33,7 @@ const SelectedGamesCard = () => {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/findSelectedGames/${userTaggedId}`);
+      const response = await fetch(`https://mlb-hack-backend.onrender.com/findSelectedGames/${userTaggedId}`);
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
@@ -58,7 +58,7 @@ const SelectedGamesCard = () => {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/points', {
+      const response = await fetch('https://mlb-hack-backend.onrender.com/points', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

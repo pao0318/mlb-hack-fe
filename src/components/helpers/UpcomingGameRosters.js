@@ -1,6 +1,6 @@
+import { Alert, Button, Card, CardContent, Checkbox, CircularProgress, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Grid, Card, CardContent, Typography, CircularProgress, Alert, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel, Button } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
   const [rosterData, setRosterData] = useState(null);
@@ -29,7 +29,7 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://127.0.0.1:8000/fetchTeamRosters', {
+      const response = await fetch('https://mlb-hack-backend.onrender.com/fetchTeamRosters', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
         gameId,
       };
 
-      const response = await fetch('http://127.0.0.1:8000/saveSelectedPlayers', {
+      const response = await fetch('https://mlb-hack-backend.onrender.com/saveSelectedPlayers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

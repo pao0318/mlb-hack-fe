@@ -1,5 +1,5 @@
+import { CircularProgress, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Typography, CircularProgress, Grid } from '@mui/material';
 import GameCard from './helpers/GameCard'; // Import the child component
 
 const PreviousMatchesTab = () => {
@@ -8,7 +8,7 @@ const PreviousMatchesTab = () => {
 
   useEffect(() => {
     // Fetch data from the backend
-    fetch('http://127.0.0.1:8000/previousGames', {
+    fetch('https://mlb-hack-backend.onrender.com/previousGames', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ year: 2024 }),

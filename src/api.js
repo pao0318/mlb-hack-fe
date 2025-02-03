@@ -1,7 +1,7 @@
 // File: src/api.js
 export const signupUser = async (formData) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/signup", {
+      const response = await fetch("https://mlb-hack-backend.onrender.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export const signupUser = async (formData) => {
 
   export const loginUser = async(formData) => {
     try{
-        const response = await fetch("http://127.0.0.1:8000/login", {
+        const response = await fetch("https://mlb-hack-backend.onrender.com/login", {
             method : "POST",
             headers : {
                 "Content-Type":"application/json",
@@ -43,7 +43,7 @@ export const signupUser = async (formData) => {
 
   export const searchApi = async(request) =>{
     try{
-      const response = await fetch("http://127.0.0.1:8000/search", {
+      const response = await fetch("https://mlb-hack-backend.onrender.com/search", {
         method: "POST",
         headers: {
           "Content-Type":"application/json",
@@ -63,7 +63,7 @@ export const signupUser = async (formData) => {
 
   export const ragApi = async(request) =>{
     try{
-      const response = await fetch("http://127.0.0.1:8000/getResponseFromRAG", {
+      const response = await fetch("https://mlb-hack-backend.onrender.com/getResponseFromRAG", {
         method: "POST",
         headers: {
           "Content-Type":"application/json",

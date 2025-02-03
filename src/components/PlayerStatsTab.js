@@ -1,37 +1,37 @@
+import {
+    Box,
+    Button,
+    CircularProgress,
+    FormControl,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography,
+} from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
 import {
-  Box,
-  Typography,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Grid,
-  CircularProgress,
-  TextField,
-  Button,
-} from "@mui/material";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  LineChart,
-  Line,
-  PieChart,
-  Pie,
-  Cell,
-  RadarChart,
-  Radar,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ResponsiveContainer,
+    Bar,
+    BarChart,
+    CartesianGrid,
+    Cell,
+    Legend,
+    Line,
+    LineChart,
+    Pie,
+    PieChart,
+    PolarAngleAxis,
+    PolarGrid,
+    PolarRadiusAxis,
+    Radar,
+    RadarChart,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
 } from "recharts";
-import axios from "axios";
 
 const PlayerStatsTab = () => {
   const [playerName, setPlayerName] = useState("Chase Utley"); // Default player
@@ -45,7 +45,7 @@ const PlayerStatsTab = () => {
     setError(null);
     try {
       // Replace with your FastAPI backend endpoint
-      const response = await axios.post(`http://127.0.0.1:8000/playerCareerStats`, {
+      const response = await axios.post(`https://mlb-hack-backend.onrender.com/playerCareerStats`, {
         player_name: playerName,
         season: year,
       });
