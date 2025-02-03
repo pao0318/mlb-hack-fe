@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, CircularProgress, Alert, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel, Button } from '@mui/material';
 
@@ -24,7 +24,8 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
     return null; // Return null if no user data is found
   };
 
-  const fetchRosters = useCallback(async () => {
+  // eslint-disable-next-line
+  const fetchRosters = (async () => {
     setLoading(true);
     setError(null);
     try {
@@ -56,7 +57,7 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
         return {
           name: player.Name,
           player_id: player["Player ID"],
-          jerseyNumber: player.jerseyNumber || 'N/A', // Ensure this field exists or provide a default
+          jerseyNumber: player.jerseyNumber || 'N/A',
           position: player.Position,
           teamId: selectedTeam === 'Home' ? homeTeamId : awayTeamId,
         };
@@ -70,7 +71,6 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
         gameId,
       };
 
-      // Send the payload
       const response = await fetch('http://127.0.0.1:8000/saveSelectedPlayers', {
         method: 'POST',
         headers: {
@@ -90,8 +90,10 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
     }
   };
 
+
   useEffect(() => {
     fetchRosters();
+    // eslint-disable-next-line
   }, [homeTeamId, awayTeamId]);
 
   const handleTeamChange = (event) => {
@@ -127,7 +129,6 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
         Upcoming Game Rosters
       </Typography>
 
-      {/* Team Selection */}
       <FormControl fullWidth margin="normal">
         <InputLabel>Select Team</InputLabel>
         <Select value={selectedTeam} onChange={handleTeamChange}>
@@ -136,7 +137,6 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
         </Select>
       </FormControl>
 
-      {/* Player Selection */}
       {selectedTeam && (
         <>
           <Typography variant="h5">
@@ -172,7 +172,6 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
             ))}
           </Grid>
 
-          {/* Selected Players */}
           <Typography variant="h6" style={{ marginTop: '20px' }}>
             Selected Players ({selectedPlayers.length}/9)
           </Typography>
@@ -187,7 +186,6 @@ const UpcomingGameRoster = ({ homeTeamId, awayTeamId }) => {
             })}
           </ul>
 
-          {/* Confirm Selection Button */}
           <Button
             variant="contained"
             color="primary"
